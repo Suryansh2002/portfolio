@@ -4,8 +4,8 @@ import Navbar from "@/components/navbar"
 export default async function Page(){
     return <div className="h-screen w-full text-white bg-gradient-to-br from-black via-black to-blue-950 overflow-y-scroll overflow-x-hidden no-scrollbar">
         <Navbar/>
-        <SkillBox name="Python" description={
-            <p>
+        <SkillBox name="Python" image_url="/python.svg">
+             <p>
             I can definetly say that Python is my most used language and I have a strong hold of it.
             <br/>
             I started with python in 2021. Intially I planned to make discord bots using python.
@@ -17,8 +17,8 @@ export default async function Page(){
             Communicating with database and redis using Python.
             I also used Python for making Rest API's using FastApi.
             </p>
-        } image_url="/python.svg"/>
-        <SkillBox name="Javascript" description={
+        </SkillBox>
+        <SkillBox name="Javascript"image_url="/javascript.svg">
             <p>
             Javascript is the recent addition to my skillset.
             <br/>
@@ -35,8 +35,8 @@ export default async function Page(){
             <br/>
             I have made a few frontend web projects using Javascript.
             </p>
-        } image_url="/javascript.svg"/>
-        <SkillBox name="MongoDB" description={
+        </SkillBox>
+        <SkillBox name="MongoDB" image_url="/mongodb.svg">
             <p>
             Mongodb was the first database I learnt.
             <br/>
@@ -48,8 +48,8 @@ export default async function Page(){
             <br/>
             I am familiar with various concepts of mongodb like collections, aggregations pipelines, indexes, etc.
             </p>
-        } image_url="/mongodb.svg"/>
-        <SkillBox name="Redis" description={
+        </SkillBox>
+        <SkillBox name="Redis" image_url="/redis.png">
             <p>
             <br/>
             I learnt redis for caching to avoid hitting the database everytime.
@@ -65,8 +65,8 @@ export default async function Page(){
             Something that I personally like the most about redis is it's Pub/Sub feature.
             <br/>
             </p>
-        } image_url="/redis.png"/>
-        <SkillBox name="NextJS" description={
+        </SkillBox>
+        <SkillBox name="NextJS" image_url="/nextjs.svg">
             <p>
             I know that I should have wrote about ReactJS first but
             <br/>
@@ -82,8 +82,8 @@ export default async function Page(){
             <br/>
             NextJs has really simplified the way we use ReactJS and make web apps.
             </p>
-        } image_url="/nextjs.svg"/>
-        <SkillBox name="Java" description={
+        </SkillBox>
+        <SkillBox name="Java" image_url="/java.svg">
             <p>
             Java was the first language I learnt.
             <br/>
@@ -98,6 +98,6 @@ export default async function Page(){
             <br/>
             I am familiar with various concepts of Java like classes, objects, inheritance, polymorphism, etc.
             </p>
-        } image_url="/java.svg"/>
+        </SkillBox>
     </div>
 }
