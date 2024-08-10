@@ -35,7 +35,7 @@ export default function Chat({email}:{email?:string}){
         return () => clearInterval(intervalId);
     }, [pollIn, messages]);
 
-    return <div className="h-full w-full">
+    return <div className="h-full w-full relative">
         <ShowMessages messages={messages} isAdmin={Boolean(email)}/>
         <SendMessage setPollIn={setPollIn} email={email}/>
     </div>;
