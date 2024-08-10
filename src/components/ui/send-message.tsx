@@ -18,7 +18,7 @@ export function SendMessage({setPollIn, email}:{setPollIn: Dispatch<SetStateActi
         if (result.errors.length > 0){
             return alert(result.errors.join("\n"));
         };
-        setPollIn(1000);
+        setPollIn(300);
     }
     return <form className="w-full flex justify-center mb-6 gap-2" onSubmit={submit}>
         <textarea className="md:w-[80%] w-[90%] ml-2 bg-slate-900 text-white text-xl rounded-3xl pt-1 border-blue-700 border-2 shadow-[0px_0px_6px_rgba(150,150,250)] px-5 py-2 no-scrollbar" name="text" id="text"></textarea>

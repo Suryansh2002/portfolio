@@ -10,28 +10,24 @@ const min = -1;
 //Polling is used because of vercels' serverless functions
 export default function Chat({email}:{email?:string}){
     const [messages, setMessages] = useState<Message[]>([]);
-    const [pollIn, setPollIn] = useState(1000);
+    const [pollIn, setPollIn] = useState(300);
     const [after, setAfter] = useState<number>(min);
 
     const fetchMessages = async()=>{
         const newMessages = await getMessages(after, email);
         if (newMessages.length <= 0){
-            setPollIn(prev=>Math.max(prev*2, 15000));
+            setPollIn(prev=>Math.max(prev*1.5, 4000));
             return;
         }
         setMessages([...messages, ...newMessages]);
-        if ((after==min)){
-            setPollIn(3000)
-        }else{
-            setPollIn(1000)
-        }
+        setPollIn(300)
         setAfter(newMessages[newMessages.length-1].id);
     };
 
     useEffect(()=>{
         setMessages([]);
         setAfter(min);
-        setPollIn(100);
+        setPollIn(300);
     },[email]);
 
     useEffect(() => {
