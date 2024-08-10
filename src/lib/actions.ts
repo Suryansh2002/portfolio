@@ -66,3 +66,16 @@ export async function sendAdminMessage(email:string, prev:any, formData: FormDat
     await db.insert(messages).values({message: message, from: "suryansh", email: email, status: "read"});
     return {errors: []};
 }
+
+
+export async function markRead(email: string){
+    console.log(email);
+    const session = await auth();
+    if (!(session && session.user?.email)){
+        return;
+    };
+    if (session.user.email != process.env.ADMIN_EMAIL){
+        return;
+    }
+    await db.update(messages).set({status: "read"}).where(eq(messages.email, email));
+}

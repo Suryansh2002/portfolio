@@ -1,5 +1,6 @@
 "use client";
-import { useState, Dispatch, SetStateAction } from "react";
+import { useState, Dispatch, SetStateAction, useEffect } from "react";
+import { markRead } from "@/lib/actions";
 import Chat from "./chat";
 
 function ShowMails({emails,selectedEmail, selectEmail}:{emails:string[],selectedEmail:string, selectEmail:Dispatch<SetStateAction<string>>}){
@@ -22,6 +23,9 @@ function ShowMails({emails,selectedEmail, selectEmail}:{emails:string[],selected
 
 export default function AdminChat({emails}:{emails:string[]}){
     const [selectedEmail, selectEmail] = useState(emails[0]);
+    useEffect(()=>{
+        markRead(selectedEmail);
+    },[selectedEmail]);
     return <div className="flex w-full h-full justify-start">
         <ShowMails emails={emails} selectedEmail={selectedEmail} selectEmail={selectEmail}/>
         <Chat email={selectedEmail}/>
