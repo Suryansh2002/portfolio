@@ -69,7 +69,6 @@ export async function sendAdminMessage(email:string, prev:any, formData: FormDat
 
 
 export async function markRead(email: string){
-    console.log(email);
     const session = await auth();
     if (!(session && session.user?.email)){
         return;
