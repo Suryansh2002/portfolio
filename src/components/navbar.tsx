@@ -1,3 +1,4 @@
+import { url } from "inspector"
 import Link from "next/link"
 
 const links = [
@@ -12,6 +13,10 @@ const links = [
     {
         name: "Projects",
         url: "/projects"
+    },
+    {
+        name: "Chat",
+        url: "/chat"
     }
 ]
 

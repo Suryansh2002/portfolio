@@ -83,7 +83,7 @@ export default async function Page(){
             NextJs has really simplified the way we use ReactJS and make web apps.
             </p>
         </SkillBox>
-        <SkillBox name="Java" image_url="/java.svg">
+        {/* <SkillBox name="Java" image_url="/java.svg">
             <p>
             Java was the first language I learnt.
             <br/>
@@ -98,6 +98,6 @@ export default async function Page(){
             <br/>
             I am familiar with various concepts of Java like classes, objects, inheritance, polymorphism, etc.
             </p>
-        </SkillBox>
+        </SkillBox> */}
     </div>
 }
