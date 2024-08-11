@@ -27,6 +27,8 @@ export default async function Page(){
     const session = await auth();
     return <div className="h-screen flex flex-col w-full relative text-white bg-gradient-to-br from-black via-black to-blue-950 overflow-hidden no-scrollbar">
     <Navbar/>
-    {session? <Chat/>: <LoginForm/>}
+    <div className="flex-1 overflow-hidden">
+        {session? <Chat/>: <LoginForm/>}
+    </div>
     </div>
 }
