@@ -36,7 +36,7 @@ export default function Chat({email}:{email?:string}){
     }, [pollIn, messages]);
 
     return <div className="h-full w-full flex flex-col relative">
-        <div className="flex-1 overflow-y-auto">
+        <div className="flex-1 overflow-y-auto pb-24">
            <ShowMessages messages={messages} isAdmin={Boolean(email)}/>
         </div>
         <SendMessage setPollIn={setPollIn} email={email}/>
