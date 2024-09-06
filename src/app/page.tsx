@@ -3,7 +3,7 @@ import HandWave from "@/components/ui/hand-wave"
 import Skills from "@/components/skills"
 import Stars from "@/components/stars"
 import Footer from "@/components/footer"
-import { Projects } from "@/components/projects"
+import Projects from "@/components/projects"
 
 export default async function Page(){
     return <div className="h-full w-full">

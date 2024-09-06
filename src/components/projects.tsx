@@ -45,7 +45,7 @@ const projects:{
     }
 ]
 
-export async function Projects(){
+export default async function Projects(){
     return <section id="projects" className="mt-40 animate-fade-in flex flex-col items-center gap-6">
         <h1 className="text-7xl bg-gradient-to-r from-cyan-200 to-fuchsia-200 text-transparent bg-clip-text">Projects</h1>
         <div className="grid md:grid-cols-3 grid-cols-1 p-4">
