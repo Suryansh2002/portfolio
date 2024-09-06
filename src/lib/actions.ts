@@ -41,7 +41,7 @@ export async function sendMessage(prev: any, formData: FormData): Promise<{error
         return {errors: ["You have sent too many messages, Please wait for a reply"]};
     }
     
-    await db.insert(messages).values({message: message, from: "me", email: session.user.email, status: "unread"});
+    await db.insert(messages).values({message: message, from: "me", email: session.user.email, status: "unread", name: session.user.name});
     return {errors: []};
 }
 
@@ -63,7 +63,7 @@ export async function sendAdminMessage(email:string, prev:any, formData: FormDat
         return {errors: ["Message too long"]};
     }
     
-    await db.insert(messages).values({message: message, from: "suryansh", email: email, status: "read"});
+    await db.insert(messages).values({message: message, from: "suryansh", email: email, status: "read", name: session.user.name});
     return {errors: []};
 }
 

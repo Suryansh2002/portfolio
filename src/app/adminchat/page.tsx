@@ -7,20 +7,20 @@ import AdminChat from "@/components/admin-chat";
 
 export default async function Page(){
     const session = await auth();
-    const emailSelect = await db
+    const emailsSelect = await db
     .select({
         email: messages.email,
+        name: messages.name
     })
     .from(messages)
-    .groupBy(messages.email)
+    .groupBy(messages.email, messages.name)
     .orderBy(
         desc(sql`count(case when ${messages.status} = 'unread' then 1 end)`),
         desc(sql`count(*)`)
-    );
-    const emails = emailSelect.map((email) => email.email);
+    );;
     return <div className="h-screen w-full flex flex-col text-white bg-gradient-to-br from-black via-black to-blue-950 overflow-hidden no-scrollbar">
         {
-            session?.user?.email == process.env.ADMIN_EMAIL ? <AdminChat emails={emails}/>: <h1 className="text-2xl text-fuchsia-100 m-7">You are not authorized to view this page</h1> 
+            session?.user?.email == process.env.ADMIN_EMAIL ? <AdminChat data={emailsSelect}/>: <h1 className="text-2xl text-fuchsia-100 m-7">You are not authorized to view this page</h1> 
         }
     </div>
 }

@@ -8,6 +8,7 @@ export const messages = pgTable("messages", {
 	from: fromEnum("from").notNull(),
 	status: status("status").notNull(),
 	email: text("email").notNull(),
+	name: text("name"),
 	message: text("message").notNull(),
 	timestamp: timestamp("timestamp").defaultNow().notNull(),
 	id: serial("id").primaryKey().notNull(),

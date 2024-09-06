@@ -10,7 +10,7 @@ export function ShowMessages({messages, isAdmin}:{messages: Message[], isAdmin?:
         }
     },[messages]);
 
-    return <div className="overflow-x-hidden overflow-y-scroll no-scrollbar h-full" ref={messagesRef}>
+    return <div className="overflow-x-hidden overflow-y-scroll no-scrollbar h-full text-white" ref={messagesRef}>
         {messages.map((msg, i)=>{
             return <div key={i} className={`flex ${msg.from == from?"justify-end ":"justify-start"} p-2`}>
                 <div className={`p-4 rounded-lg ${msg.from == from? "bg-emerald-500": "bg-blue-400"} md:max-w-[40%] max-w-[80%] break-words`}>
