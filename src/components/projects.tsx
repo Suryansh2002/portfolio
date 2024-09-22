@@ -26,6 +26,12 @@ const projects:{
         image: "/project-assets/pokemonbot.png"
     },
     {
+        name: "ShitPost",
+        demo: "https://shitpost.appkit.site",
+        code: "https://github.com/Suryansh2002/shitpost",
+        image: "/project-assets/shitpost.png"
+    },
+    {
         name: "Flappy Bird Online",
         demo: "https://flappybird.appkit.site",
         code: "https://github.com/Suryansh2002/FlappyBirdOnline",
@@ -36,12 +42,6 @@ const projects:{
         demo: "https://chatnear.appkit.site",
         code: "https://github.com/Suryansh2002/ChatNear",
         image: "/project-assets/chatnear.png"
-    },
-    {
-        name: "Jsonsh",
-        demo: "https://github.com/Suryansh2002/jsonsh",
-        code: "https://github.com/Suryansh2002/jsonsh",
-        image: "/project-assets/jsonsh.png"
     }
 ]
 
