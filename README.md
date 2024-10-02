@@ -15,3 +15,5 @@ Pokemon Bot being the one I have contributed the most.
  - Animation is done using Framer motion.
  
  - Backend is managed using Nextjs Server Actions.
+
+ - Chat authentication is managed using Next-Auth(Auth.js) using Google OAuth.
