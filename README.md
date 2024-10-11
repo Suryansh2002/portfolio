@@ -17,3 +17,7 @@ Pokemon Bot being the one I have contributed the most.
  - Backend is managed using Nextjs Server Actions.
 
  - Chat authentication is managed using Next-Auth(Auth.js) using Google OAuth.
+
+### ScreenShot
+
+![Home](https://github.com/Suryansh2002/portfolio/blob/main/public/project-assets/portfolio.png?raw=true)
