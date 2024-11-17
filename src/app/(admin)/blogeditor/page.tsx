@@ -5,9 +5,11 @@ import React, { useState, useMemo, forwardRef } from 'react';
 
 const JoditEditor = dynamic(() => import('jodit-react'), { ssr: false });
 
-const Example = forwardRef(({ placeholder }: { placeholder: string }, ref:React.ForwardedRef<Jodit>) => {
+
+const Editor = forwardRef<Jodit,{
+	placeholder?: string;
+}>(({placeholder}, ref) => {
 	const [content, setContent] = useState('');
-  console.log(content);
 
 	const config = useMemo(()=>{
     return {
@@ -21,7 +23,7 @@ const Example = forwardRef(({ placeholder }: { placeholder: string }, ref:React.
 
 	return (
 		<JoditEditor
-			ref={ref}
+		    ref={ref}
 			value={content}
             config={config}
 			onBlur={newContent => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
@@ -30,4 +32,8 @@ const Example = forwardRef(({ placeholder }: { placeholder: string }, ref:React.
 	);
 });
 
-export default Example;
+Editor.displayName = 'Editor';
+
+export default function Page() {
+  return <Editor />
+}
