@@ -34,7 +34,7 @@ function ModeButton(
 export default function Skills() {
     const [selected, setSelected] = useState<SkillType>("Frontend");
     return  <section id="skills" className="mt-32 animate-fade-in flex flex-col items-center gap-4">
-        <h1 className="text-7xl bg-gradient-to-r from-cyan-200 to-fuchsia-200 text-transparent bg-clip-text">Skills</h1>
+        <h1 className="text-7xl bg-gradient-to-r from-cyan-200 via-white to-fuchsia-200 text-transparent bg-clip-text">Skills</h1>
         <div className="md:w-[80%] w-[90%] md:h-64 h-96  rounded-xl overflow-hidden flex flex-col md:flex-row">
             <Slide type={selected}/>
             <div className="flex flex-col flex-1 rounded-xl">

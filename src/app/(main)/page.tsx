@@ -10,7 +10,7 @@ export default async function Page(){
         <Stars/>
         <main className="text-white w-full">
             <section className="md:ml-40 md:mt-40 mt-32 mx-5">
-                <h1 className="md:text-8xl text-7xl w-fit animate-fade-in bg-gradient-to-r from-cyan-200 to-fuchsia-200 bg-clip-text text-transparent ">
+                <h1 className="md:text-8xl text-7xl w-fit animate-fade-in bg-gradient-to-r from-cyan-200 via-white to-fuchsia-200 bg-clip-text text-transparent ">
                     Hi<HandWave/> I am Suryansh
                 </h1>
                 <p className="text-xl mt-6 animate-fade-in">
