@@ -1,4 +1,5 @@
 import { ProjectsType } from "@/lib/types"
+import Image from "next/image"
 
 const projects:{
     name:ProjectsType,
@@ -53,7 +54,7 @@ export default async function Projects(){
                 projects.map((project)=>{
                     return <div key={project.name} className="bg-slate-900 rounded-xl p-4 shadow-[0px_0px_6px_rgba(150,150,250)] scale-95">
                         <a href={project.image}>
-                            <img src={project.image} alt={project.name} className="w-full h-60 object-cover rounded-xl" height={100} width={80}/>
+                            <Image src={project.image} alt={project.name} className="w-full h-60 object-cover rounded-xl" height={100} width={80} unoptimized/>
                         </a>
                         <h2 className="text-2xl mt-4">{project.name}</h2>
                         <div className="flex justify-around mt-4">

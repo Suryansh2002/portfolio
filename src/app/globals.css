@@ -13,3 +13,19 @@
         scrollbar-width: none;  /* Firefox */
   }
 }
+
+.jodit-react-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.jodit-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.jodit-workplace {
+    flex-grow: 1;
+}
