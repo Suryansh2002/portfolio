@@ -1,8 +1,7 @@
 import db from "@/db";
 import { messages } from "@/db/schema";
 import { desc, sql} from "drizzle-orm";
-import AdminChat from "@/components/admin-chat";
-
+import AdminChat from "@/components/chat/admin-chat";
 
 export default async function Page(){
     const emailsSelect = await db

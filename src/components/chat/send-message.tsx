@@ -1,6 +1,7 @@
 import { Dispatch, SetStateAction, FormEvent } from "react";
 import { sendMessage, sendAdminMessage } from "@/lib/actions";
 import Image from "next/image";
+import toast from "react-hot-toast";
 
 export function SendMessage({setPollIn, email}:{setPollIn: Dispatch<SetStateAction<number>>, email?:string}){
     const submit = async(event: FormEvent<HTMLFormElement>)=>{
@@ -9,7 +10,7 @@ export function SendMessage({setPollIn, email}:{setPollIn: Dispatch<SetStateActi
         event.currentTarget.reset();
         const result = email ? await sendAdminMessage(email, null, formData) : await sendMessage(null, formData);
         if (result.errors.length > 0){
-            return alert(result.errors.join("\n"));
+            return toast.error(result.errors.join("\n"));
         };
         setPollIn(300);
     }

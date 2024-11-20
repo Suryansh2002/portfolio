@@ -1,13 +1,21 @@
 "use client";
 import { useCallback, useRef, useState } from "react";
+import { saveBlog } from "@/lib/actions";
+import type { EditorType } from "@/lib/types";
+import toast from "react-hot-toast";
 import JoditEditor from "@/components/editors/jodit-editor";
 import MDEEditor from "@/components/editors/mde-editor";
 
-type EditorType = "jodit"|"markdown";
 const selected = "bg-white text-blue-700";
 
-function SaveCallback(content:string) {
-	alert(content);
+async function saveCallback(title:string, content:string, editor:EditorType) {
+	const toastId = toast.loading("Saving...");
+	const result = await saveBlog(title, content, editor);
+	
+	if (result){
+		return toast.error(result, {id: toastId});
+	}
+	toast.success("Saved", {id: toastId});
 }
 
 export default function Page() {
@@ -16,13 +24,14 @@ export default function Page() {
 		jodit: "",
 		markdown: ""
 	});
+	const titleRef = useRef<string>("");
 
 	const getContent = useCallback((editor:EditorType) => {
 		return contentRef.current[editor];
-	}, []);
+	}, [contentRef]);
 
 	return <div className="flex flex-col h-screen">
-		<div className="flex justify-between p-1">
+		<nav className="flex justify-between p-1">
 			<div className="flex-1 flex justify-center">
 				<div className="bg-gray-100 flex gap-2 rounded-lg p-1">
 					<button onClick={() => setEditor("jodit")} className={`p-2 font-medium text-sm rounded-lg ${editor == "jodit" ? selected:"text-gray-900"}`}>
@@ -35,12 +44,19 @@ export default function Page() {
 			</div>
 			<div className="p-1">
 				<button className="text-blue-500 border-blue-400 border hover:bg-blue-100 font-medium p-2 bg-gray-100 rounded-lg" onClick={()=>{
-					SaveCallback(contentRef.current[editor]);
+					saveCallback(titleRef.current, contentRef.current[editor], editor);
 				}}>
 					Save
 				</button>
 			</div>
-		</div>
+		</nav>
+		<hr />
+		<section className="p-2">
+			<h1 className="text-lg">Blog Title</h1>
+			<input type="text" name="blog-title" id="blog-title" className="px-1 border border-black rounded-md min-w-60 h-7" onChange={(event)=>{
+				titleRef.current = event.target.value
+			}}/>
+		</section>
 		{
 			editor == "jodit" 
 			&& 

@@ -2,6 +2,7 @@ import "../globals.css";
 import type { Metadata } from "next";
 import {Nunito} from "next/font/google"
 import { auth } from "@/auth";
+import { Toaster } from "react-hot-toast";
 import Unauthorized from "@/components/unauthorized";
 
 const font = Nunito({weight: "500", subsets:["latin"]});
@@ -19,8 +20,17 @@ export default async function RootLayout({
 
   return (
     <html lang="en" className={font.className}>
-      <body>{session?.user?.email != process.env.ADMIN_EMAIL ? <Unauthorized/> : children
-      }</body>
+      <body>
+        {
+          session?.user?.email != process.env.ADMIN_EMAIL ? 
+          <Unauthorized/> 
+          : 
+          <>
+            <Toaster />
+            {children}
+          </>
+        }
+      </body>
     </html>
   )
 }

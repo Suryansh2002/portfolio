@@ -6,12 +6,8 @@ const links = [
         url: "/"
     },
     {
-        name: "Skills",
-        url: "/#skills"
-    },
-    {
-        name: "Projects",
-        url: "/#projects"
+        name: "Blogs",
+        url: "/blogs"
     },
     {
         name: "Chat",

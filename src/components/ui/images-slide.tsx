@@ -30,7 +30,7 @@ export default function Slide({type}:{type:SkillType}){
             setIndex((index+1)%imagesList.length)
         }, 2000)
         return ()=>clearInterval(IntervalId)
-    },[type, index])
+    },[imagesList, index])
     return <div className="md:flex-grow-[0.7] flex-grow relative ">
         <AnimatePresence>
             <MotionDiv key={index} index={index} imageList={imagesList}/>

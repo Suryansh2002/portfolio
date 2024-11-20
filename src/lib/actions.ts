@@ -1,8 +1,11 @@
 "use server";
 import db from "@/db";
-import { messages } from "@/db/schema";
+import { messages, blogs } from "@/db/schema";
 import { auth } from "@/auth";
 import { eq, gt, and, asc, desc } from "drizzle-orm";
+import type { EditorType } from "@/lib/types";
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
 export async function getMessages(after: number, email?:string){
     const session = await auth();
@@ -77,4 +80,40 @@ export async function markRead(email: string){
         return;
     }
     await db.update(messages).set({status: "read"}).where(eq(messages.email, email));
+}
+
+export async function saveBlog(title:string, content:string, editor: EditorType){
+    const session = await auth();
+    if (!(session && session.user?.email)){
+        return "Not logged in";
+    };
+    if (session.user.email != process.env.ADMIN_EMAIL){
+        return "Not authorized";
+    }
+    if (!title || !content){
+        return "Both title and content are required";
+    }
+    await db.insert(blogs).values({title, content, editor});
+
+    revalidatePath("/blogs");
+    redirect("blogs");
+}
+
+export async function deleteBlog(id:string){
+    const session = await auth();
+    if (!(session && session.user?.email)){
+        return "Not logged in";
+    };
+    if (session.user.email != process.env.ADMIN_EMAIL){
+        return "Not authorized";
+    }
+    await db.delete(blogs).where(eq(blogs.id, id));
+    revalidatePath("/blogs");
+    revalidatePath(`/blogs/${id}`);
+    redirect("/blogs");
+}
+
+export async function isAdmin(){
+    const session = await auth();
+    return session?.user?.email == process.env.ADMIN_EMAIL;
 }

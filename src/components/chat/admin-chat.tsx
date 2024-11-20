@@ -22,10 +22,16 @@ function ShowMails({data,selectedEmail, selectEmail}:{data:{email:string}[],sele
 }
 
 export default function AdminChat({data}:{data:{email:string}[]}){
-    const [selectedEmail, selectEmail] = useState(data[0].email);
+    const [selectedEmail, selectEmail] = useState(data[0]?.email || "");
     useEffect(()=>{
-        markRead(selectedEmail);
+        selectedEmail && markRead(selectedEmail);
     },[selectedEmail]);
+
+    if (data.length <= 0){
+        return <div className="w-full h-full flex justify-center items-center">
+            <h1 className="text-3xl text-white">No messages</h1>
+        </div>
+    }
     return <div className="flex w-full h-full justify-start">
         <ShowMails data={data} selectedEmail={selectedEmail} selectEmail={selectEmail}/>
         <Chat email={selectedEmail}/>
