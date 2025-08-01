@@ -23,14 +23,14 @@ export function BlogCard({id, title, content, timestamp, editor}:{id:string, tit
       <Link className={`
         relative
         p-4 rounded-lg w-96 border border-gray-600
-        bg-gray-950 hover:bg-gradient-to-b hover:from-gray-900 hover:via-gray-950 hover:to-gray-950
+        bg-gray-800 bg-opacity-45 hover:bg-gradient-to-b hover:from-gray-900 hover:via-gray-950 hover:to-gray-900
         hover:shadow-lg hover:shadow-gray-900
         `
       } href={`blogs/${id}`}>
         <h1 className="text-xl">{title}</h1>
         <hr className="my-2 border-gray-300"/>
         <p>
-          {editor == "markdown" ? markdownToTxt(content.slice(0, 100)): extractTextExcludingImages(content.slice(0, 100))}
+          {editor == "markdown" ? markdownToTxt(content.slice(0, 200)): extractTextExcludingImages(content.slice(0, 200))}
         </p>
         <div className="flex justify-between mt-4">
           <div className="flex items-center gap-1">
