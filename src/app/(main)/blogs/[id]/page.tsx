@@ -20,7 +20,7 @@ export default async function Page({params:{id}}:{params:{id:string}}){
         </section>
     }
     return <section className="p-3 md:px-14">
-        <div className="bg-gray-800 bg-opacity-65 border border-gray-600 text-white p-4 rounded-lg relative">
+        <div className="bg-gray-800 bg-opacity-50 border border-gray-600 text-white p-4 rounded-lg relative">
             <BlogDelete id={id}/>
             <h1 className="text-3xl">
                 {blog.title}
