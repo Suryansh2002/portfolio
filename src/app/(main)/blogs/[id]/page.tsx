@@ -28,6 +28,7 @@ export default async function Page({params:{id}}:{params:{id:string}}){
             <hr className="mt-2 mb-3"/>
             <div className="prose prose-invert">
                 {blog.editor == "markdown" && <MDXRemote source={blog.content} /> }
+                {blog.editor == "jodit" && <div dangerouslySetInnerHTML={{__html: blog.content}} />}
             </div>
         </div>
     </section>

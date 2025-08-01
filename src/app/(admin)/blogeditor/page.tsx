@@ -3,8 +3,12 @@ import { useCallback, useRef, useState } from "react";
 import { saveBlog } from "@/lib/actions";
 import type { EditorType } from "@/lib/types";
 import toast from "react-hot-toast";
-import JoditEditor from "@/components/editors/jodit-editor";
-import MDEEditor from "@/components/editors/mde-editor";
+import dynamic from "next/dynamic";
+// import JoditEditor from "@/components/editors/jodit-editor";
+// import MDEEditor from "@/components/editors/mde-editor";
+
+const JoditEditor = dynamic(() => import('@/components/editors/jodit-editor'), { ssr: false });
+const MDEEditor = dynamic(() => import('@/components/editors/mde-editor'), { ssr: false });
 
 const selected = "bg-white text-blue-700";
 

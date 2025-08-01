@@ -1,13 +1,24 @@
 import markdownToTxt from "markdown-to-txt";
 import Link from "next/link";
 import {Clock, BookOpenText} from "lucide-react"
+import { EditorType } from "@/lib/types";
+import { JSDOM } from "jsdom";
+
 function calculateReadTime(content:string){
   const words = content.split(" ");
   const readTime = Math.ceil(words.length/200);
   return readTime + " min read";
 }
 
-export function BlogCard({id, title, content, timestamp}:{id:string, title:string, content:string, timestamp:Date}){
+function extractTextExcludingImages(content: string) {
+  const dom = new JSDOM(content);
+  const document = dom.window.document;
+  const images = document.querySelectorAll('img');
+  images.forEach(img => img.remove());
+  return document.body.textContent?.trim() || '';
+}
+
+export function BlogCard({id, title, content, timestamp, editor}:{id:string, title:string, content:string, timestamp:Date, editor:EditorType}){
     return <div className="flex items-center justify-center">
       <Link className={`
         relative
@@ -19,7 +30,7 @@ export function BlogCard({id, title, content, timestamp}:{id:string, title:strin
         <h1 className="text-xl">{title}</h1>
         <hr className="my-2 border-gray-300"/>
         <p>
-          {markdownToTxt(content.slice(0, 100))}
+          {editor == "markdown" ? markdownToTxt(content.slice(0, 100)): extractTextExcludingImages(content.slice(0, 100))}
         </p>
         <div className="flex justify-between mt-4">
           <div className="flex items-center gap-1">
