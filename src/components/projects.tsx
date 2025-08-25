@@ -49,12 +49,6 @@ const projects:{
         code: "https://github.com/Suryansh2002/FlappyBirdOnline",
         image: "/project-assets/flappybird.png"
     },
-    {
-        name: "Chat Near",
-        demo: "https://chatnear.appkit.site",
-        code: "https://github.com/Suryansh2002/ChatNear",
-        image: "/project-assets/chatnear.png"
-    },
 ]
 
 export default async function Projects(){
