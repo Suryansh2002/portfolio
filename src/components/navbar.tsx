@@ -20,7 +20,7 @@ export default async function Navbar(){
        {links.map((link)=>{
             return <Link key={link.name} href={link.url} className={`
                 inline-block md:text-xl text-lg py-2 px-3 text-center rounded-xl scale-105
-                text-white hover:shadow-[0px_0px_6px_rgba(150,150,250)] hover:border-2 hover:border-blue-600 hover:bg-neutral-900 hover:scale-110
+                text-white hover:shadow-[0px_0px_6px_rgba(150,150,250)] border-2 border-transparent hover:border-blue-600 hover:bg-neutral-900 hover:scale-110
                 transition-all duration-100
             `}>
                 {link.name}

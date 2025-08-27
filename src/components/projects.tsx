@@ -44,6 +44,12 @@ const projects:{
         image: "/project-assets/dinoage.png"
     },
     {
+        name: "Jsonsh Library",
+        demo: "https://pypi.org/project/jsonsh/",
+        code: "https://github.com/Suryansh2002/jsonsh",
+        image: "/project-assets/jsonsh.png"
+    },
+    {
         name: "Flappy Bird Online",
         demo: "https://flappybird.appkit.site",
         code: "https://github.com/Suryansh2002/FlappyBirdOnline",
