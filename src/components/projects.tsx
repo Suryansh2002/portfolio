@@ -1,4 +1,5 @@
 import Image from "next/image"
+import { ProjectImage } from "./ui/project-image"
 
 const projects:{
     name:string,
@@ -55,18 +56,22 @@ const projects:{
         code: "https://github.com/Suryansh2002/FlappyBirdOnline",
         image: "/project-assets/flappybird.png"
     },
+    {
+        name: "Make Em Cry",
+        demo: "https://makemcry.appkit.site",
+        code: "https://github.com/Suryansh2002/make-em-cry",
+        image: "/project-assets/makemcry.png"
+    }
 ]
 
 export default async function Projects(){
     return <section id="projects" className="mt-40 animate-fade-in flex flex-col items-center gap-6">
         <h1 className="text-7xl bg-gradient-to-r from-cyan-200 to-fuchsia-200 text-transparent bg-clip-text">Projects</h1>
-        <div className="flex max-w-full flex-wrap justify-center">
+        <div className="flex max-w-full flex-wrap justify-center gap-4">
             {
                 projects.map((project)=>{
-                    return <div key={project.name} className="bg-slate-900 rounded-xl p-4 scale-95 shadow-[0px_0px_2px_blue] border border-gray-500">
-                        <a href={project.image}>
-                            <Image src={project.image} alt={project.name} className="w-[30rem] h-[15rem] object-cover rounded-xl" height={100} width={80} unoptimized/>
-                        </a>
+                    return <div key={project.name} className="bg-slate-900 rounded-xl p-4 shadow-[0px_0px_2px_blue] border border-gray-500">
+                        <ProjectImage src={project.image} alt={project.name}/>
                         <h2 className="text-2xl mt-4">{project.name}</h2>
                         <div className="flex justify-around mt-4">
                             <a href={project.demo} className="shadow-[0px_0px_10px_blue] border-2 border-blue-700 bg-blue-500 text-white px-4 py-2 rounded-xl">
