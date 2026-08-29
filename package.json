@@ -21,7 +21,7 @@
     "markdown-to-txt": "^2.0.1",
     "marked": "^15.0.1",
     "next": "^14.2.18",
-    "next-auth": "^5.0.0-beta.20",
+    "next-auth": "^5.0.0-beta.32",
     "next-mdx-remote": "^5.0.0",
     "prismjs": "^1.30.0",
     "react": "^18",
