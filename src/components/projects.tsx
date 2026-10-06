@@ -1,4 +1,5 @@
-import Image from "next/image"
+"use client"
+import { useState } from "react"
 import { ProjectImage } from "./ui/project-image"
 
 const projects:{
@@ -8,11 +9,10 @@ const projects:{
     image:string
 }[] = [
     {
-        name: "Portfolio",
-        demo: "https://suryansh.online",
-        code: "https://github.com/Suryansh2002/portfolio",
-        image: "/project-assets/portfolio.png"
-
+        name: "MemePost",
+        demo: "https://memepost.appkit.site",
+        code: "https://github.com/Suryansh2002/shitpost",
+        image: "/project-assets/shitpost.png"
     },
     {
         name: "Chat World",
@@ -27,10 +27,11 @@ const projects:{
         image: "/project-assets/pokemonbot.png"
     },
     {
-        name: "ShitPost",
-        demo: "https://shitpost.appkit.site",
-        code: "https://github.com/Suryansh2002/shitpost",
-        image: "/project-assets/shitpost.png"
+        name: "Portfolio",
+        demo: "https://suryansh.online",
+        code: "https://github.com/Suryansh2002/portfolio",
+        image: "/project-assets/portfolio.png"
+
     },    
     {
         name: "Personal Chat",
@@ -64,20 +65,25 @@ const projects:{
     }
 ]
 
-export default async function Projects(){
+const MAX_VISIBLE = 3
+
+export default function Projects(){
+    const [showAll, setShowAll] = useState(false)
+    const visibleProjects = showAll ? projects : projects.slice(0, MAX_VISIBLE)
+
     return <section id="projects" className="mt-40 animate-fade-in flex flex-col items-center gap-6">
         <h1 className="text-7xl bg-gradient-to-r from-cyan-200 to-fuchsia-200 text-transparent bg-clip-text">Projects</h1>
-        <div className="flex max-w-full flex-wrap justify-center gap-4">
+        <div className="flex max-w-full flex-wrap justify-center gap-6">
             {
-                projects.map((project)=>{
-                    return <div key={project.name} className="bg-slate-900 rounded-xl p-4 shadow-[0px_0px_2px_blue] border border-gray-500">
+                visibleProjects.map((project)=>{
+                    return <div key={project.name} className="bg-slate-800/40 rounded-2xl p-4 border border-slate-600/40 hover:border-blue-500/50 hover:bg-slate-800/60 transition-colors">
                         <ProjectImage src={project.image} alt={project.name}/>
-                        <h2 className="text-2xl mt-4">{project.name}</h2>
-                        <div className="flex justify-around mt-4">
-                            <a href={project.demo} className="shadow-[0px_0px_10px_blue] border-2 border-blue-700 bg-blue-500 text-white px-4 py-2 rounded-xl">
+                        <h2 className="text-2xl mt-4 text-white">{project.name}</h2>
+                        <div className="flex justify-around gap-3 mt-4">
+                            <a href={project.demo} className="rounded-2xl bg-slate-800 text-white px-4 py-2 border-2 border-blue-600 hover:bg-blue-950 hover:shadow-[0px_0px_10px_blue] transition-all">
                                 Demo
                             </a>
-                            <a href={project.code} className="shadow-[0px_0px_10px_blue] border-2 border-blue-700 bg-blue-500 text-white px-4 py-2 rounded-xl">
+                            <a href={project.code} className="rounded-2xl bg-slate-800 text-white px-4 py-2 border-2 border-blue-600 hover:bg-blue-950 hover:shadow-[0px_0px_10px_blue] transition-all">
                                 Code
                             </a>
                         </div>
@@ -85,5 +91,13 @@ export default async function Projects(){
                 })
             }
         </div>
+        {projects.length > MAX_VISIBLE && (
+            <button
+                onClick={() => setShowAll(s => !s)}
+                className="rounded-2xl bg-slate-800 text-white px-6 py-2 border-2 border-blue-600 hover:bg-blue-950 hover:shadow-[0px_0px_10px_blue] transition-all mt-2"
+            >
+                {showAll ? "Show Less" : "More"}
+            </button>
+        )}
     </section>
 }

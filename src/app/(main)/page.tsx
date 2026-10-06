@@ -4,6 +4,7 @@ import Skills from "@/components/skills"
 import Stars from "@/components/stars"
 import Footer from "@/components/footer"
 import Projects from "@/components/projects"
+import ContactForm from "@/components/contact-form"
 
 export default async function Page(){
     return <div className="h-full w-full">
@@ -22,6 +23,7 @@ export default async function Page(){
             </section>
             <Skills/>
             <Projects/>
+            <ContactForm/>
             <Footer/>
         </main>
     </div>

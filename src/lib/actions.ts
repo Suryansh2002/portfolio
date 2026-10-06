@@ -6,6 +6,7 @@ import { eq, gt, and, asc, desc } from "drizzle-orm";
 import type { EditorType } from "@/lib/types";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import { sendContactEmail } from "@/lib/mailer";
 
 export async function getMessages(after: number, email?:string){
     const session = await auth();
@@ -116,4 +117,36 @@ export async function deleteBlog(id:string){
 export async function isAdmin(){
     const session = await auth();
     return session?.user?.email == process.env.ADMIN_EMAIL;
+}
+
+export async function sendContactMessage(prev: any, formData: FormData): Promise<{success: boolean, errors: string[]}>{
+    const name = (formData.get("name") as string || "").trim();
+    const email = (formData.get("email") as string || "").trim();
+    const subject = (formData.get("subject") as string || "").trim();
+    const message = (formData.get("message") as string || "").trim();
+
+    const errors: string[] = [];
+    if (!name) errors.push("Name is required");
+    if (!email) errors.push("Email is required");
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errors.push("Invalid email address");
+    if (!subject) errors.push("Subject is required");
+    if (!message) errors.push("Message is required");
+
+    if (name.length > 100) errors.push("Name must be under 100 characters");
+    if (email.length > 200) errors.push("Email must be under 200 characters");
+    if (subject.length > 200) errors.push("Subject must be under 200 characters");
+    if (message.length > 2000) errors.push("Message must be under 2000 characters");
+
+    if (errors.length > 0){
+        return {success: false, errors};
+    }
+
+    try {
+        await sendContactEmail({name, email, subject, message});
+    } catch (e) {
+        console.error("Failed to send contact email", e);
+        return {success: false, errors: ["Failed to send message. Please try again later."]};
+    }
+
+    return {success: true, errors: []};
 }
