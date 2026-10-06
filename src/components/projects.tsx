@@ -28,7 +28,7 @@ const projects:{
     },
     {
         name: "Portfolio",
-        demo: "https://suryansh.online",
+        demo: "https://suryansh.me",
         code: "https://github.com/Suryansh2002/portfolio",
         image: "/project-assets/portfolio.png"
 

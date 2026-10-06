@@ -111,7 +111,7 @@ function buildContactEmailHtml(input: ContactEnquiry): string {
         <!-- Footer -->
         <div class="footer" style="background:#0b1320;border-top:1px solid #1e293b;padding:20px 32px;text-align:center;">
           <div style="font-size:12px;color:#94a3b8;">Suryansh Sharma — Portfolio</div>
-          <div style="font-size:11px;color:#64748b;margin-top:4px;">suryansh.online</div>
+          <div style="font-size:11px;color:#64748b;margin-top:4px;">suryansh.me</div>
         </div>
       </div>
     </div>

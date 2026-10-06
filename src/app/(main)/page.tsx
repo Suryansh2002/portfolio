@@ -6,8 +6,36 @@ import Footer from "@/components/footer"
 import Projects from "@/components/projects"
 import ContactForm from "@/components/contact-form"
 
+const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Suryansh Sharma",
+    url: "https://suryansh.me",
+    jobTitle: "Full Stack Developer",
+    description: "A tech enthusiast and full stack developer writing code to make amazing stuff.",
+    knowsAbout: [
+        "Full Stack Development",
+        "React",
+        "Next.js",
+        "Node.js",
+        "Python",
+        "TypeScript",
+        "PostgreSQL",
+        "MongoDB",
+        "Redis",
+    ],
+    sameAs: [
+        "https://github.com/Suryansh2002",
+        "https://www.linkedin.com/in/suryansh-sharma-a5209a28a/",
+    ],
+}
+
 export default async function Page(){
     return <div className="h-full w-full">
+        <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <Stars/>
         <main className="text-white w-full">
             <section className="md:ml-40 md:mt-40 mt-32 mx-5">

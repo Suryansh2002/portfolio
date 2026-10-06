@@ -8,7 +8,11 @@ import Unauthorized from "@/components/unauthorized";
 const font = Nunito({weight: "500", subsets:["latin"]});
 
 export const metadata: Metadata = {
-  title: "Portfolio-Admin",
+  title: "Admin",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default async function RootLayout({
