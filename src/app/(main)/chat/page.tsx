@@ -25,7 +25,7 @@ function LoginForm() {
 export default async function Page(){
     const session = await auth();
     return <div className="h-[90vh] flex flex-col w-full relative">
-    <div className="flex-1 overflow-hidden">
+    <div className="flex-1 overflow-hidden w-full max-w-4xl mx-auto">
         {session? <Chat/>: <LoginForm/>}
     </div>
     </div>

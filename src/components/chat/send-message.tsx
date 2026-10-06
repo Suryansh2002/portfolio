@@ -14,10 +14,22 @@ export function SendMessage({setPollIn, email}:{setPollIn: Dispatch<SetStateActi
         };
         setPollIn(300);
     }
-    return <form className="flex justify-center gap-2 absolute bottom-4 left-0 right-0 px-4" onSubmit={submit}>
-        <textarea className="flex w-[800px] flex-shrink ml-2 bg-slate-900 text-white text-xl rounded-3xl pt-4 border-blue-700 border-2 shadow-[0px_0px_6px_rgba(150,150,250)] px-5 no-scrollbar" name="text" id="text"></textarea>
-        <button type="submit" className="bg-indigo-400 mr-2 rounded-3xl w-16 flex-shrink-0 flex justify-center items-center border-blue-800 border-4">
-            <Image src={"/send.svg"} alt="send" width={40} height={30}/>
-        </button>
+    return <form className="sticky bottom-0 flex justify-center w-full px-4 py-4" onSubmit={submit}>
+        <div className="flex items-end gap-3 w-full max-w-2xl">
+            <textarea
+                className="flex-1 bg-slate-900/60 backdrop-blur-sm text-white text-lg sm:text-xl placeholder-slate-500 resize-none outline-none rounded-2xl border border-teal-400/20 focus:border-teal-400/50 px-5 py-3 sm:py-4 min-h-[56px] sm:min-h-[64px] no-scrollbar shadow-lg transition-colors"
+                name="text"
+                id="text"
+                placeholder="Type your message..."
+                rows={1}
+            ></textarea>
+            <button
+                type="submit"
+                className="flex-shrink-0 flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-teal-500/20 hover:bg-teal-500/30 text-teal-300 active:scale-95 transition-all shadow-sm"
+                aria-label="Send message"
+            >
+                <Image src={"/send.svg"} alt="send" width={26} height={26} className="sm:w-8 sm:h-8" />
+            </button>
+        </div>
     </form>
 }
