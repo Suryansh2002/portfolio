@@ -12,7 +12,7 @@ function SubmitButton() {
         <button
             type="submit"
             disabled={pending}
-            className="h-12 w-full rounded-2xl bg-slate-800 text-white font-medium text-base border-2 border-blue-600 hover:bg-blue-950 hover:shadow-[0px_0px_10px_blue] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            className="min-h-12 w-full rounded-2xl bg-slate-800 text-white font-medium text-base border-2 border-blue-600 hover:bg-blue-950 hover:shadow-[0px_0px_10px_blue] transition-all disabled:opacity-50 disabled:cursor-not-allowed px-4 py-3 shrink-0"
         >
             {pending ? "Sending..." : "Send Message"}
         </button>
@@ -40,16 +40,16 @@ export default function ContactForm() {
 
     return (
         <section id="contact" className="mt-40 animate-fade-in flex flex-col items-center gap-10">
-            <div className="flex flex-col items-center gap-3">
-                <h1 className="text-5xl md:text-7xl font-semibold bg-gradient-to-r from-cyan-200 via-white to-fuchsia-200 bg-clip-text text-transparent tracking-tight">
+            <div className="flex flex-col items-center gap-3 px-4">
+                <h1 className="text-4xl sm:text-5xl md:text-7xl bg-gradient-to-r from-cyan-200 via-white to-fuchsia-200 bg-clip-text text-transparent tracking-tight text-center">
                     Get in touch
                 </h1>
-                <p className="text-slate-400 text-lg text-center max-w-md">
+                <p className="text-slate-400 text-base sm:text-lg text-center max-w-md">
                     Have a question or want to work together? Drop me a message and I'll get back to you.
                 </p>
             </div>
 
-            <div className="w-[90%] max-w-5xl flex flex-col md:flex-row gap-6 justify-center items-stretch">
+            <div className="w-[92%] max-w-5xl flex flex-col md:flex-row gap-6 justify-center items-stretch">
                 {/* Contact info */}
                 <div className="flex-1 flex flex-col justify-center">
                     <div className="flex flex-col gap-4">
@@ -81,33 +81,33 @@ export default function ContactForm() {
                         submittedRef.current = true;
                         formAction(formData);
                     }}
-                    className="flex-1 flex flex-col gap-4 bg-slate-800/40 rounded-2xl p-8 border border-slate-600/40 backdrop-blur-sm"
+                    className="flex-1 flex flex-col gap-4 bg-slate-800/40 rounded-2xl p-5 sm:p-8 border border-slate-600/40 backdrop-blur-sm min-w-0"
                 >
                     <div className="flex flex-col md:flex-row gap-4">
                         <input
                             type="text"
                             name="name"
                             placeholder="Your name"
-                            className="flex-1 h-12 bg-slate-950/60 text-white text-base rounded-xl px-4 border border-slate-600/40 outline-none focus:border-blue-500/60 focus:bg-slate-950/80 placeholder:text-slate-500 transition-colors"
+                            className="flex-1 min-h-12 w-full bg-slate-950/60 text-white text-base rounded-xl px-4 py-3 border border-slate-600/40 outline-none focus:border-blue-500/60 focus:bg-slate-950/80 placeholder:text-slate-500 transition-colors shrink-0"
                         />
                         <input
                             type="email"
                             name="email"
                             placeholder="Your email"
-                            className="flex-1 h-12 bg-slate-950/60 text-white text-base rounded-xl px-4 border border-slate-600/40 outline-none focus:border-blue-500/60 focus:bg-slate-950/80 placeholder:text-slate-500 transition-colors"
+                            className="flex-1 min-h-12 w-full bg-slate-950/60 text-white text-base rounded-xl px-4 py-3 border border-slate-600/40 outline-none focus:border-blue-500/60 focus:bg-slate-950/80 placeholder:text-slate-500 transition-colors shrink-0"
                         />
                     </div>
                     <input
                         type="text"
                         name="subject"
                         placeholder="Subject"
-                        className="h-12 bg-slate-950/60 text-white text-base rounded-xl px-4 border border-slate-600/40 outline-none focus:border-blue-500/60 focus:bg-slate-950/80 placeholder:text-slate-500 transition-colors"
+                        className="min-h-12 w-full bg-slate-950/60 text-white text-base rounded-xl px-4 py-3 border border-slate-600/40 outline-none focus:border-blue-500/60 focus:bg-slate-950/80 placeholder:text-slate-500 transition-colors shrink-0"
                     />
                     <textarea
                         name="message"
                         placeholder="Your message"
                         rows={5}
-                        className="bg-slate-950/60 text-white text-base rounded-xl px-4 py-3 border border-slate-600/40 outline-none focus:border-blue-500/60 focus:bg-slate-950/80 placeholder:text-slate-500 resize-y transition-colors"
+                        className="w-full bg-slate-950/60 text-white text-base rounded-xl px-4 py-3 border border-slate-600/40 outline-none focus:border-blue-500/60 focus:bg-slate-950/80 placeholder:text-slate-500 resize-y transition-colors min-h-28"
                     />
                     <SubmitButton />
                 </form>

@@ -6,7 +6,7 @@ import { eq, gt, and, asc, desc } from "drizzle-orm";
 import type { EditorType } from "@/lib/types";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { sendContactEmail } from "@/lib/mailer";
+import { sendContactEmail, sendChatNotification } from "@/lib/mailer";
 
 export async function getMessages(after: number, email?:string){
     const session = await auth();
@@ -46,6 +46,18 @@ export async function sendMessage(prev: any, formData: FormData): Promise<{error
     }
     
     await db.insert(messages).values({message: message, from: "me", email: session.user.email, status: "unread", name: session.user.name});
+
+    // Notify the admin by email (best-effort: don't fail the message send on email errors)
+    try {
+        await sendChatNotification({
+            senderEmail: session.user.email,
+            senderName: session.user.name,
+            message,
+        });
+    } catch (err) {
+        console.error("Failed to send chat notification email:", err);
+    }
+
     return {errors: []};
 }
 
