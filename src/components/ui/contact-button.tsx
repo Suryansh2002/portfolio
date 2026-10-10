@@ -31,7 +31,7 @@ export default function ContactButton({className}:{className?:string}){
     return <>
         <Socials cls={cls} setcls={setcls}/>      
         <button 
-        className={`h-14 w-28 rounded-2xl bg-slate-800 hover:bg-blue-950 border-2 border-blue-600 hover:shadow-[0px_0px_10px_blue] ${className}`}
+        className={`h-14 w-28 rounded-2xl bg-slate-800/40 hover:bg-blue-950/40 border-2 border-blue-600 hover:shadow-[0px_0px_10px_blue] ${className}`}
         onClick={()=>{setcls("block")}}>
             Contact Me
         </button>
